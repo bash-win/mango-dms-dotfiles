@@ -79,7 +79,14 @@ return {
 				},
 			})
 
-			vim.lsp.enable({ "clangd", "rust_analyzer", "lua_ls" })
+			vim.lsp.config("qmlls", {
+				cmd = { "qmlls6", "-I", "/usr/lib/qt6/qml" },
+				capabilities = capabilities,
+				filetypes = { "qml", "qmljs" },
+				single_file_support = true,
+			})
+
+			vim.lsp.enable({ "clangd", "rust_analyzer", "lua_ls", "qmlls" })
 
 			-- completion
 			local cmp = require("cmp")
